@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Urlaubsziele – Entscheidungshilfe</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #1e293b;
+      --accent: #38bdf8;
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    header {
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin-bottom: 16px;
+      font-size: 1.4rem;
+    }
+
+    .nav {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .nav button {
+      padding: 12px 18px;
+      border-radius: 999px;
+      border: none;
+      background: var(--card);
+      color: var(--text);
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .nav button:hover {
+      background: var(--accent);
+      color: #020617;
+    }
+
+    section {
+      padding: 20px;
+    }
+
+    section h2 {
+      margin-bottom: 12px;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 14px;
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+
+    .card-header {
+      padding: 16px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .card-header strong {
+      font-size: 1.05rem;
+    }
+
+    .card-content {
+      display: none;
+      padding: 16px;
+      border-top: 1px solid #334155;
+    }
+
+    .card.open .card-content {
+      display: block;
+    }
+
+    .pros, .cons {
+      margin: 10px 0;
+    }
+
+    .pros li { color: #86efac; }
+    .cons li { color: #fca5a5; }
+
+    .images {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      margin-top: 10px;
+    }
+
+    .images img {
+      height: 120px;
+      border-radius: 10px;
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Urlaubsziele – Vergleich</h1>
+  <div class="nav">
+    <button onclick="scrollToSection('strand')">🏖️ Strand</button>
+    <button onclick="scrollToSection('berge')">🏔️ Berge</button>
+    <button onclick="scrollToSection('stadt')">🌆 Stadt</button>
+  </div>
+</header>
+
+<section id="strand">
+  <h2>🏖️ Strand</h2>
+
+  <div class="card">
+    <div class="card-header" onclick="toggleCard(this)">
+      <strong>Ziel Strand 1</strong>
+      <span>▼</span>
+    </div>
+    <div class="card-content">
+      <p>Kurzbeschreibung zum Strandziel.</p>
+
+      <ul class="pros">
+        <li>Warm</li>
+        <li>Schöne Strände</li>
+        <li>Gut für Gruppen</li>
+      </ul>
+
+      <ul class="cons">
+        <li>August gut besucht</li>
+        <li>Auto sinnvoll</li>
+      </ul>
+
+      <div class="images">
+        <img src="https://picsum.photos/300/200?1">
+        <img src="https://picsum.photos/300/200?2">
+        <img src="https://picsum.photos/300/200?3">
+      </div>
+    </div>
+  </div>
+
+  <!-- 2 weitere Karten später einfach kopieren -->
+</section>
+
+<section id="berge">
+  <h2>🏔️ Berge</h2>
+  <p>Platzhalter – kommt gleich.</p>
+</section>
+
+<section id="stadt">
+  <h2>🌆 Stadt</h2>
+  <p>Platzhalter – kommt gleich.</p>
+</section>
+
+<script>
+  function scrollToSection(id) {
+    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+  }
+
+  function toggleCard(header) {
+    const card = header.parentElement;
+    document.querySelectorAll('.card').forEach(c => {
+      if (c !== card) c.classList.remove('open');
+    });
+    card.classList.toggle('open');
+  }
+</script>
+
+</body>
+</html>
